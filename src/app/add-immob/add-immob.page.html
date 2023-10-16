@@ -1,0 +1,46 @@
+
+
+<ion-content [fullscreen]="true">
+
+  <div class="header">
+    <ion-title class="title" size="large">Add new bien </ion-title>
+  </div>
+  <form (ngSubmit)="addImmob()">
+    <ion-item>
+      <ion-label>Name:</ion-label>
+      <ion-input [(ngModel)]="ImmobData.Name" name="name" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>nb_pieces:</ion-label>
+      <ion-input [(ngModel)]="ImmobData.nb_pieces" name="nb_pieces" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>localisation:</ion-label>
+      <ion-input [(ngModel)]="ImmobData.localisation" name="localisation" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>price:</ion-label>
+      <ion-input [(ngModel)]="ImmobData.price" name="price" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>description:</ion-label>
+      <ion-input [(ngModel)]="ImmobData.description" name="description" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>image:</ion-label>
+      <ion-input [(ngModel)]="ImmobData.image" name="image" type="text"></ion-input>
+    </ion-item>
+
+    <div class="ion-padding">
+      <ion-button type="submit" expand="block">Save</ion-button>
+    </div>
+    
+    <ion-fab vertical="bottom" horizontal="end" style="margin-bottom:30px">
+      <ion-fab-button [routerLink]="['/home']">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-fab-button >
+      </ion-fab>
+  </form>
+   
+
+</ion-content>

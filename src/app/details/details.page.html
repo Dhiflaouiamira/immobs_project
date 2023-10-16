@@ -1,0 +1,13 @@
+<ion-content *ngIf="selectedImmob">
+  <div class="details-container">
+    <div class="details-header">
+      <h2>{{ selectedImmob?.Name }}</h2> <!-- Add the safe navigation operator (?) -->
+    </div>
+    <div class="details-body">
+      <img [src]="selectedImmob?.image" class="details-image" /> <!-- Add the safe navigation operator (?) -->
+      <p><strong>Localisation:</strong> {{ selectedImmob?.localisation }}</p> <!-- Add the safe navigation operator (?) -->
+      <p><strong>Price:</strong> {{ selectedImmob?.price }}</p> <!-- Add the safe navigation operator (?) -->
+      <p><strong>Description:</strong> {{ selectedImmob?.description }}</p> <!-- Add the safe navigation operator (?) -->
+    </div>
+  </div>
+</ion-content>

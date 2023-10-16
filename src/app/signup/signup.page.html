@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <ion-title class="title" size="large">Get Started</ion-title>
+    <p class="subtitle">By creating an account</p>
+  </div>
+  <form [formGroup]="ionicForm" (ngSubmit)="signUP()">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input formControlName="fullname" type="text" required></ion-input>
+      </ion-item>
+      <div style="padding-bottom: 16px;" *ngIf="ionicForm.controls['fullname'].touched && ionicForm.controls['fullname'].invalid">
+        <ion-text *ngIf="ionicForm.controls['fullname'].hasError('required')" class="errorInput" color="danger">Fullname is required.</ion-text>
+      </div>
+      
+
+      <ion-item>
+        <ion-label position="floating">Contact</ion-label>
+        <ion-input formControlName="contact" type="tel" required></ion-input>
+      </ion-item>
+      <div style="padding-bottom: 16px;" *ngIf="ionicForm.controls['contact'].touched && ionicForm.controls['contact'].invalid">
+        <ion-text *ngIf="ionicForm.controls['contact'].hasError('required')" class="errorInput" color="danger">Contact is required.</ion-text>
+      </div>
+      
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type="email" required></ion-input>
+      </ion-item>
+      <div style="padding-bottom: 16px;" *ngIf="ionicForm.controls['email'].touched && ionicForm.controls['email'].invalid">
+        <ion-text *ngIf="ionicForm.controls['email'].hasError('required')" class="errorInput" color="danger">Email is required.</ion-text>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input formControlName="password" type="password" required></ion-input>
+      </ion-item>
+      <div style="padding-bottom: 16px;" *ngIf="ionicForm.controls['password'].touched && ionicForm.controls['password'].invalid">
+        <ion-text *ngIf="ionicForm.controls['password'].hasError('required')" class="errorInput" color="danger">Password is required.</ion-text>
+      </div>
+    </div>
+    <div class="signinLink">
+      <p class="p">Already a member? <a [routerLink]="['/login']" style="color: #FFC33F">Log in</a></p>
+    </div>
+    <ion-fab *ngIf="ionicForm.valid" vertical="bottom" horizontal="end" style="margin-bottom: 10px;">
+      <ion-fab-button (click)="signUP()">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+  </form>
+</ion-content>

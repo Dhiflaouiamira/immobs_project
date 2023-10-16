@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="header">
+    <ion-title class="title" size="large">Welcome</ion-title>
+    <p class="subtitle">ImmobPlus</p>
+  </div>
+  <!-- Button to navigate to the page for getting immobs by email at the top right -->
+
+  <div class="ion-padding">
+    <ion-card *ngFor="let immob of immobs | async">
+      <ion-card-content>
+        <h2>{{ immob.Name }}</h2>
+        <div class="ion-text-center">
+          <div class="blur-image-container">
+            <img [src]="immob.image" class="blur-image" />
+            <div class="image-overlay">
+              <div class="overlay-text">
+                <p class="overlay-text-item">{{ immob.price }}</p>
+                <p class="overlay-text-item">{{ immob.localisation }}</p>
+              </div>
+            </div>
+          </div>
+          <ion-button fill="outline"  [routerLink]="['/details']" expand="full" color="secondary" class="details-button">Détails</ion-button>
+
+        </div>
+        <!-- ... Autres éléments de carte ... -->
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  
+<ion-fab vertical="top" horizontal="end"  style="margin-bottom:30px">
+  <ion-fab-button [routerLink]="['/login']">
+    <ion-icon name="chevron-forward"></ion-icon>
+  </ion-fab-button >
+  </ion-fab>
+</ion-content>
