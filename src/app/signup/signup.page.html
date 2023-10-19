@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content class="ion-padding">
   <div class="header">
     <ion-title class="title" size="large">Get Started</ion-title>
     <p class="subtitle">By creating an account</p>
@@ -37,8 +37,8 @@
         <ion-text *ngIf="ionicForm.controls['password'].hasError('required')" class="errorInput" color="danger">Password is required.</ion-text>
       </div>
     </div>
-    <div class="signinLink">
-      <p class="p">Already a member? <a [routerLink]="['/login']" style="color: #FFC33F">Log in</a></p>
+    <div class="signupLink">
+      <p class="p">Already a member? <a [routerLink]="['/login']" style="color: #1167a0">Log in</a></p>
     </div>
     <ion-fab *ngIf="ionicForm.valid" vertical="bottom" horizontal="end" style="margin-bottom: 10px;">
       <ion-fab-button (click)="signUP()">

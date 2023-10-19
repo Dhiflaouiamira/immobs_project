@@ -65,4 +65,25 @@
   font-size: 12px; /* Adjust the font size as needed */
   width: 80px; /* Adjust the width as needed */
   margin: 5px; /* Adjust the margin as needed */
+  border-radius: 15px;
+
+}
+
+.animated-title {
+  animation: colorChange 3s infinite;
+}
+
+@keyframes colorChange {
+  0% {
+    color: blue;
+    transform: scale(1);
+  }
+  50% {
+    color: purple;
+    transform: scale(1.2);
+  }
+  100% {
+    color: blue;
+    transform: scale(1);
+  }
 }

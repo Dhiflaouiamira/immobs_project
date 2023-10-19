@@ -1,6 +1,6 @@
 .header{
-   margin-top: 100px;
-   margin-bottom: 30px;
+   margin-top:30px;
+   margin-bottom: 5px;
    text-align: center;
 
    .subtitle{
@@ -20,7 +20,7 @@ ion-item {
    border-radius: 10px;
    margin-bottom: 16px;
 }
-.signinLink{
+.loginLink{
    display: flex;
   justify-content: center;
   margin: auto;
@@ -33,6 +33,7 @@ ion-item {
 //   margin: auto;  111
    .p{
        font-size: 0.9em;
+       --background: rgb(14 116 144);
    }
    a {
        text-decoration: none;
@@ -67,4 +68,25 @@ ion-item {
        // border-radius: 10px;
        // margin-bottom: 16px;
    }
+}
+
+.signupLink{
+   display: flex;
+   margin: auto;
+   flex-direction: row;
+   align-content: center;
+   justify-content: center;
+ position: absolute;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ width: 80%;
+   .p{
+       font-size: 0.9em;
+   }
+   a {
+       text-decoration: none;
+     }
+
+  
 }

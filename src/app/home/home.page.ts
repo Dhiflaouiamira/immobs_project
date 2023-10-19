@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
-import { AuthenticationService } from '../authentication.service'; // Update this path
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { IonModal } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { ImmobService, Immob } from '../immmob-service.service';
+import { OverlayEventDetail } from '@ionic/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -10,44 +14,94 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  immobs!: Observable<any[]>;
-  ImmobData = {
-    Name: '',
-    description: '',
-    image: '',
-    localisation: '',
-    nb_pieces: '',
-    price: ''
-  };
+  @ViewChild(IonModal) modal!: IonModal;
+  immobSub!: Subscription;
+  model: any = {};
+  immobs: Immob[] = [];
+  isOpen: boolean = false;
 
-  constructor(
-    public firestore: AngularFirestore,
-    public authService: AuthenticationService,
-    private router: Router
-  ) {
-    this.immobs = this.firestore.collection('immobs').valueChanges();
+  constructor(public ngFireAuth: AngularFireAuth ,
+    private immob: ImmobService,
+    private router: Router,
+    private authService:AuthenticationService
+    ) {}
+
+  ngOnInit(): void {
+    this.immob.getImmobs();
+    this.immobSub = this.immob.immobs.subscribe({
+      next: (immobs) => {
+        this.immobs = immobs;
+      },
+      error: (e) => {
+        console.log(e);
+      },
+    });
   }
 
-  addImmob() {
-    this.firestore.collection('immobs').add(this.ImmobData);
-    this.ImmobData = {
-      Name: '',
-      description: '',
-      image: '',
-      localisation: '',
-      nb_pieces: '',
-      price: ''
-    };
+  onWillDismiss(event: Event) {
+    const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    this.model = {};
+    this.isOpen = false;
   }
 
-  async signOut() {
+  cancel() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  async save(form: NgForm) {
     try {
-      await this.authService.signOut();
-      console.log('User signed out successfully.');
-      this.router.navigate(['/landing']);
-    } catch (error) {
-      console.error('Error in signing out:', error);
-     
+      if (!form.valid) {
+        // alert
+        return;
+      }
+      console.log(form.value);
+      if (this.model?.id) await this.immob.updateImmob(this.model.id, form.value);
+      else await this.immob.addImmob(form.value);
+      this.modal.dismiss();
+    } catch (e) {
+      console.log(e);
     }
   }
-}
+
+  async deleteImmob(immob: Immob) {
+    try {
+      await this.immob.deleteImmob(immob?.id!);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async editImmob(immob: Immob) {
+    try {
+      this.isOpen = true;
+      this.model = { ...immob };
+      // const data: Immob = await this.immob.getImmobById(immob?.id!);
+      // console.log('data: ', data);
+      // this.model = { ...data };
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.immobSub) this.immobSub.unsubscribe();
+  }
+
+  
+    openDetails(id: string) {
+      this.router.navigate(['/details', id]);
+    }
+
+    async signOut() {
+      try {
+        await this.authService.signOut();
+        console.log('User signed out successfully.');
+        this.router.navigate(['/landing']);
+      } catch (error) {
+        console.error('Error in signing out:', error);
+       
+      }
+    }
+  }
+  
+

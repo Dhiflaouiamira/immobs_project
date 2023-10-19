@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddImmobPageRoutingModule } from './add-immob-routing.module';
+import { ConfirmationPageRoutingModule } from './confirmation-routing.module';
 
-import { AddImmobPage } from './add-immob.page';
+import { ConfirmationPage } from './confirmation.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddImmobPageRoutingModule
+    ConfirmationPageRoutingModule
   ],
-  declarations: [AddImmobPage]
+  declarations: [ConfirmationPage]
 })
-export class AddImmobPageModule {}
+export class ConfirmationPageModule {}

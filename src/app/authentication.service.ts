@@ -50,15 +50,11 @@ export class AuthenticationService {
     }
   }
 
-  async signOut() {
-    try {
-      return await this.ngFireAuth.signOut();
-    } catch (error) {
-      // Handle error appropriately
-      console.error('Error in signing out:', error);
-      throw error;
-    }
-  }
+
+  async signOut(){
+    return await this.ngFireAuth.signOut();
+   }
+
 
   async signInWithPhoneNumber(phoneNumber: string) {
     try {

@@ -3,14 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 
-  {
-    path: 'update-immob',
-    loadChildren: () => import('./update-immob/update-immob.module').then( m => m.UpdateImmobPageModule)
-  },
-  {
-    path: 'add-immob',
-    loadChildren: () => import('./add-immob/add-immob.module').then( m => m.AddImmobPageModule)
-  },
+
 
   {
     path: 'landing',
@@ -40,14 +33,24 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
+
+
   {
-    path: 'get-by-email',
-    loadChildren: () => import('./get-by-email/get-by-email.module').then( m => m.GetByEmailPageModule)
+    path: 'confirmation',
+    loadChildren: () => import('./confirmation/confirmation.module').then( m => m.ConfirmationPageModule)
   },
   {
-    path: 'details',
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  },
+  {
+    path: 'details/:id',
     loadChildren: () => import('./details/details.module').then( m => m.DetailsPageModule)
   },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  }
 
 ];
 

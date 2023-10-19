@@ -1,13 +1,28 @@
-<ion-content *ngIf="selectedImmob">
-  <div class="details-container">
-    <div class="details-header">
-      <h2>{{ selectedImmob?.Name }}</h2> <!-- Add the safe navigation operator (?) -->
-    </div>
-    <div class="details-body">
-      <img [src]="selectedImmob?.image" class="details-image" /> <!-- Add the safe navigation operator (?) -->
-      <p><strong>Localisation:</strong> {{ selectedImmob?.localisation }}</p> <!-- Add the safe navigation operator (?) -->
-      <p><strong>Price:</strong> {{ selectedImmob?.price }}</p> <!-- Add the safe navigation operator (?) -->
-      <p><strong>Description:</strong> {{ selectedImmob?.description }}</p> <!-- Add the safe navigation operator (?) -->
-    </div>
-  </div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="property">
+  
+    <ion-card-header>
+      <ion-card-title>{{property.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p style="color: rgb(17, 72, 145);">Description:</p>  <p>{{property.description}}</p>
+      <p style="color: rgb(18, 73, 155);">Localisation:</p>  <p>{{property.localisation}}</p>
+      <p style="color: rgb(18, 73, 153);">Price:</p>  <p>{{property.price}}TND</p>
+      <p style="color: rgb(18, 73, 155);">Number of Rooms:</p> <p> {{property.nb_pieces}}</p>
+    
+    </ion-card-content>
+    <br>
+    <ion-img [src]="property.image1" style="width: 100%;"></ion-img>
+    <ion-img [src]="property.image2" style="width: 100%;"></ion-img>
+    <ion-img [src]="property.image3" style="width: 100%;"></ion-img>
+  </ion-card>
 </ion-content>

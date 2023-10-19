@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { GetByEmailPage } from './get-by-email.page';
+import { ProfilePage } from './profile.page';
 
-describe('GetByEmailPage', () => {
-  let component: GetByEmailPage;
-  let fixture: ComponentFixture<GetByEmailPage>;
+describe('ProfilePage', () => {
+  let component: ProfilePage;
+  let fixture: ComponentFixture<ProfilePage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(GetByEmailPage);
+    fixture = TestBed.createComponent(ProfilePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -68,3 +68,60 @@
   display: flex;
   justify-content: center;
 }
+ion-modal {
+  --height: 50%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(14 116 144);
+  --color: white;
+}
+
+ion-toolbar{
+  --background: rgb(14 116 144);
+  --color: white;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+ position: absolute; 
+ bottom: 10px;
+  left: 10px; 
+  color: white;
+   background-color: rgba(0, 0, 0, 0.8); 
+   padding: "5px";
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animation-text {
+  animation: fadeInOut 3s infinite;
+  font-weight: bold;
+  font-size: 20px;
+  background-color: rgb(236, 133, 133);
+  padding: 5px;
+}
+
+.animation-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+}
