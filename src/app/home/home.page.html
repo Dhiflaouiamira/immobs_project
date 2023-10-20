@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar >
 
-    <ion-title>
+    <ion-title class="title">
       Immobs 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="content">
 
-  <ion-list>
+  <ion-list class="content">
     <ion-item-sliding *ngFor="let item of immobs">
       <ion-item-options side="end">
         <ion-item-option color="primary" [routerLink]="['/details', item?.id]">Details</ion-item-option>
@@ -182,7 +182,7 @@
   </ion-fab>
 
      <!-- Sign out button as a floating action button -->
-     <ion-fab vertical="top" horizontal="start">
+     <ion-fab vertical="top" horizontal="end">
       <ion-fab-button (click)="signOut()">
         <ion-icon name="log-out-outline"></ion-icon>
       </ion-fab-button>

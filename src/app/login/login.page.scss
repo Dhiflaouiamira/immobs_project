@@ -8,8 +8,8 @@ ion-item {
    margin-bottom: 16px;
 }
 .header{
-   margin-top: 100px;
-   margin-bottom :50px;
+   margin-top: 50px;
+   margin-bottom :30px;
    text-align: center;
 
    .subtitle{
@@ -53,3 +53,9 @@ ion-item {
    font-size: small;
    padding-top: -16px;
 }
+
+
+   ion-icon {
+       font-size: 1.8rem;
+       margin: 1vh 2vh;
+   }

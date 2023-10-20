@@ -35,10 +35,27 @@
       <p class="p">New memember? <a [routerLink]="['/signup']" style="color: #0a418a">SignUp now</a></p>
     </div>
 
-    <ion-fab *ngIf="ionicForm.valid" vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
-      <ion-fab-button  type="submit" (click)="login()" >
-        <ion-icon name="chevron-forward"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+   
+    <div class="ion-margin-horizontal">
+      <ion-button
+      
+       class="ion-margin-horizontal"
+        size="large" 
+        expand="block" 
+        shape="round" 
+        color="primary"
+        (click)="login()">
+        <ion-text>Log In</ion-text>
+      </ion-button>
+    </div>
+    
+   
+    <p class="ion-text-center">
+      <ion-icon name="logo-facebook" color="tertiary"></ion-icon>
+      <ion-icon name="logo-twitter" color="secondary"></ion-icon>
+      <ion-icon name="logo-google" color="danger"></ion-icon>
+    </p>
+
   </form>
+  
 </ion-content>

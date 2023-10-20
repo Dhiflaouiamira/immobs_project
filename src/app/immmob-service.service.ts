@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Firestore, addDoc, collection,DocumentData, deleteDoc, doc, getDoc, getDocs, updateDoc,QuerySnapshot, QueryDocumentSnapshot } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
-
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 export interface Immob {
   name: string; 
   description: string;
@@ -29,6 +32,8 @@ export class ImmobService {
 
   constructor(
     private firestore: Firestore,
+    private Afirestore: AngularFirestore,
+    private afAuth: AngularFireAuth
   ) { }
 
   async addImmob(data: Immob) {
@@ -110,4 +115,13 @@ export class ImmobService {
   }
 
 
+ 
 }
+
+
+
+
+
+
+
+
