@@ -1,3 +1,4 @@
+// AuthenticationService
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { from } from 'rxjs';
@@ -14,7 +15,6 @@ export class AuthenticationService {
     try {
       return await this.ngFireAuth.createUserWithEmailAndPassword(email, password);
     } catch (error) {
-      // Handle error appropriately
       console.error('Error in registration:', error);
       throw error;
     }
@@ -24,7 +24,6 @@ export class AuthenticationService {
     try {
       return await this.ngFireAuth.signInWithEmailAndPassword(email, password);
     } catch (error) {
-      // Handle error appropriately
       console.error('Error in login:', error);
       throw error;
     }
@@ -34,7 +33,6 @@ export class AuthenticationService {
     try {
       return await this.ngFireAuth.sendPasswordResetEmail(email);
     } catch (error) {
-      // Handle error appropriately
       console.error('Error in resetting password:', error);
       throw error;
     }
@@ -44,17 +42,14 @@ export class AuthenticationService {
     try {
       return await this.ngFireAuth.currentUser;
     } catch (error) {
-      // Handle error appropriately
       console.error('Error in getting user profile:', error);
       throw error;
     }
   }
 
-
   async signOut(){
     return await this.ngFireAuth.signOut();
-   }
-
+  }
 
   async signInWithPhoneNumber(phoneNumber: string) {
     try {
@@ -64,11 +59,9 @@ export class AuthenticationService {
 
       if (verificationCode) {
         const userCredential = await confirmationResult.confirm(verificationCode);
-        // User is now signed in
         console.log(userCredential.user);
       }
     } catch (error) {
-      // Handle error appropriately
       console.error('Error in signing in with phone number:', error);
       throw error;
     }
